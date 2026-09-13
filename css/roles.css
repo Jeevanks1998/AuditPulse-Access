@@ -1,0 +1,40 @@
+/* ==========================================================================
+   roles.css — Role cards grid + read-only permission matrix
+   ========================================================================== */
+
+.roles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); margin-bottom: var(--sp-8); }
+
+.role-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-3); }
+.role-card__icon { width: 40px; height: 40px; border-radius: var(--radius-icon); display: flex; align-items: center; justify-content: center; }
+.role-card__icon svg { width: 20px; height: 20px; }
+.role-card[data-role="admin"] .role-card__icon { background: var(--role-admin-soft); color: var(--role-admin); }
+.role-card[data-role="auditor"] .role-card__icon { background: var(--role-auditor-soft); color: var(--role-auditor); }
+.role-card[data-role="reviewer"] .role-card__icon { background: var(--role-reviewer-soft); color: var(--role-reviewer); }
+.role-card[data-role="viewer"] .role-card__icon { background: var(--role-viewer-soft); color: var(--role-viewer); }
+
+.role-card__name { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-md); }
+.role-card__desc { font-size: var(--fs-sm); color: var(--text-secondary); flex: 1; }
+.role-card__count { font-size: var(--fs-xs); color: var(--text-tertiary); font-weight: 600; padding-top: var(--sp-2); border-top: 1px solid var(--border); }
+.role-card__count .mono { color: var(--text-primary); font-size: var(--fs-sm); }
+
+/* ---- Permission matrix ---- */
+.perm-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.perm-table th, .perm-table td { padding: var(--sp-3); text-align: center; border-bottom: 1px solid var(--border); }
+.perm-table th { font-size: var(--fs-2xs); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-tertiary); }
+.perm-table td:first-child, .perm-table th:first-child { text-align: left; font-weight: 600; color: var(--text-primary); }
+.perm-table tbody tr:last-child td { border-bottom: none; }
+.perm-icon { display: inline-flex; width: 20px; height: 20px; border-radius: 50%; align-items: center; justify-content: center; }
+.perm-icon svg { width: 12px; height: 12px; }
+.perm-icon--yes { background: var(--color-success-soft); color: var(--color-success); }
+.perm-icon--no { background: var(--surface-sunken); color: var(--text-tertiary); }
+
+.perm-note { display: flex; align-items: center; gap: 8px; margin-top: var(--sp-4); font-size: var(--fs-xs); color: var(--text-tertiary); }
+.perm-note svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+@media (max-width: 960px) {
+  .roles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .roles-grid { grid-template-columns: 1fr; }
+  .perm-table { font-size: var(--fs-xs); }
+}

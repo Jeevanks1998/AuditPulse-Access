@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Users — AuditPulse Access</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/users.css">
+</head>
+<body data-page="users">
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-mark" style="background:#fff;overflow:hidden;"><img src="img/logo.png" alt="AuditPulse logo" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="sidebar__logo-text">AuditPulse Access<span>Organisation Portal</span></div>
+    </div>
+
+    <nav>
+      <div class="sidebar__group-label">Access Management</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Dashboard</a></li>
+        <li><a class="sidebar__link" href="users.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Users</a></li>
+        <li><a class="sidebar__link" href="teams.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.8"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M15.5 14.3c2.8.3 4.5 2.3 4.5 5.2"/></svg>
+          Teams</a></li>
+        <li><a class="sidebar__link" href="roles.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"/></svg>
+          Roles</a></li>
+      </ul>
+
+      <div class="sidebar__group-label" style="margin-top:20px;">Organisation</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="organisation.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h.01M9 12h.01M9 16h.01M15 8h.01M15 12h.01M15 16h.01"/></svg>
+          Organisation</a></li>
+        <li><a class="sidebar__link" href="access-logs.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v18M4 3h16v18H4z"/><path d="M13 8h4M13 12h4M13 16h4"/></svg>
+          Access logs</a></li>
+      </ul>
+
+      <div class="sidebar__group-label" style="margin-top:20px;">Coming later</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="roadmap.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 4 3 5-7"/></svg>
+          Roadmap</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <a class="sidebar__link sidebar__link--external" href="#" title="Return to the AuditPulse app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 12h6l2-4 2 8 2-4h6"/></svg>
+        Back to AuditPulse</a>
+    </div>
+  </aside>
+
+  <div>
+    <!-- ============ TOPBAR ============ -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+      <div class="topbar__actions">
+        <div class="menu-wrap" id="profileMenuWrap">
+          <button class="profile-chip" role="button" id="profileMenuTrigger" type="button">
+            <div class="profile-chip__avatar" id="profileAvatar">—</div>
+            <span class="profile-chip__name" id="profileName">Loading…</span>
+          </button>
+          <div class="menu">
+            <button class="menu__item" id="profileAccountLink" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+              Account settings</button>
+            <div class="menu__divider"></div>
+            <button class="menu__item menu__item--danger" id="profileLogoutBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+              Log out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ CONTENT ============ -->
+    <main class="content">
+      <div class="page-head page-head--row">
+        <div>
+          <div class="page-head__eyebrow">AuditPulse Access</div>
+          <h1>Users</h1>
+          <p>Create people, assign a role, and turn AuditPulse access on or off.</p>
+        </div>
+        <button class="btn btn--primary" id="openCreateUser">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Create user
+        </button>
+      </div>
+
+      <div class="users-toolbar">
+        <div class="users-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="userSearch" placeholder="Search users…">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__pad" style="padding-bottom:0;">
+          <div class="table-wrap">
+            <table class="dtable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>AuditPulse access</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="usersTbody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="usersEmpty" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <p>No users match your search.</p>
+          </div>
+        </div>
+        <div style="height:var(--sp-4)"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============ CREATE / EDIT USER MODAL ============ -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="userModalTitle">
+    <div class="modal-dialog__title" id="userModalTitle">Create user</div>
+    <div class="modal-dialog__subtitle" id="userModalSubtitle">Add a person and grant them AuditPulse access.</div>
+    <form id="userForm">
+      <div class="modal-dialog__body">
+        <div class="form-field">
+          <label for="fieldName">Full name</label>
+          <input class="form-control" type="text" id="fieldName" placeholder="Jordan Smith" autocomplete="off">
+          <div class="field__error" id="nameError">Enter the person's full name.</div>
+        </div>
+        <div class="form-field">
+          <label for="fieldEmail">Email</label>
+          <input class="form-control" type="email" id="fieldEmail" placeholder="jordan@company.com" autocomplete="off">
+          <div class="field__error" id="emailError">Enter a valid email address.</div>
+        </div>
+        <div class="form-field">
+          <label for="fieldPassword">Password</label>
+          <input class="form-control" type="password" id="fieldPassword" placeholder="••••••••" autocomplete="new-password">
+          <div class="field__error" id="passwordError">Password must be at least 8 characters.</div>
+        </div>
+        <div class="form-field">
+          <label for="fieldConfirmPassword">Confirm password</label>
+          <input class="form-control" type="password" id="fieldConfirmPassword" placeholder="••••••••" autocomplete="new-password">
+          <div class="field__error" id="confirmPasswordError">Passwords don't match.</div>
+        </div>
+        <div class="form-field">
+          <label for="fieldRole">Role</label>
+          <select id="fieldRole"></select>
+        </div>
+        <div class="form-field__row">
+          <label for="fieldAccess" style="margin:0;">AuditPulse access</label>
+          <label class="toggle">
+            <input type="checkbox" id="fieldAccess" checked>
+            <span class="toggle__track"></span>
+          </label>
+        </div>
+        <div class="form-field">
+          <label for="fieldStatus">Status</label>
+          <select id="fieldStatus">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Disabled">Disabled</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-dialog__actions">
+        <button type="button" class="btn btn--secondary" data-modal-close="userModal">Cancel</button>
+        <button type="submit" class="btn btn--primary" id="userFormSave">Create user</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ DELETE CONFIRM MODAL ============ -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="modal-dialog__title" id="deleteModalTitle">Delete user</div>
+    <div class="modal-dialog__subtitle">This removes <strong id="deleteTargetName"></strong> and revokes their AuditPulse access. This can't be undone.</div>
+    <div class="modal-dialog__actions">
+      <button type="button" class="btn btn--secondary" data-modal-close="deleteModal">Cancel</button>
+      <button type="button" class="btn btn--danger" id="confirmDeleteBtn">Delete user</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/users.js"></script>
+
+<div style="text-align:center; padding: 18px 16px; font-size: 13px; color: var(--text-tertiary, #94A3B8); border-top: 1px solid var(--border, #E2E8F0);"><strong>Designed by Jeevan K S</strong></div>
+</body>
+</html>

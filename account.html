@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account settings — AuditPulse Access</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/account.css">
+</head>
+<body data-page="account">
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-mark" style="background:#fff;overflow:hidden;"><img src="img/logo.png" alt="AuditPulse logo" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="sidebar__logo-text">AuditPulse Access<span>Organisation Portal</span></div>
+    </div>
+
+    <nav>
+      <div class="sidebar__group-label">Access Management</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Dashboard</a></li>
+        <li><a class="sidebar__link" href="users.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Users</a></li>
+        <li><a class="sidebar__link" href="teams.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.8"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M15.5 14.3c2.8.3 4.5 2.3 4.5 5.2"/></svg>
+          Teams</a></li>
+        <li><a class="sidebar__link" href="roles.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"/></svg>
+          Roles</a></li>
+      </ul>
+
+      <div class="sidebar__group-label" style="margin-top:20px;">Organisation</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="organisation.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h.01M9 12h.01M9 16h.01M15 8h.01M15 12h.01M15 16h.01"/></svg>
+          Organisation</a></li>
+        <li><a class="sidebar__link" href="access-logs.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v18M4 3h16v18H4z"/><path d="M13 8h4M13 12h4M13 16h4"/></svg>
+          Access logs</a></li>
+      </ul>
+
+      <div class="sidebar__group-label" style="margin-top:20px;">Coming later</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="roadmap.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 4 3 5-7"/></svg>
+          Roadmap</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <a class="sidebar__link sidebar__link--external" href="#" title="Return to the AuditPulse app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 12h6l2-4 2 8 2-4h6"/></svg>
+        Back to AuditPulse</a>
+    </div>
+  </aside>
+
+  <div>
+    <!-- ============ TOPBAR ============ -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+      <div class="topbar__actions">
+        <div class="menu-wrap" id="profileMenuWrap">
+          <button class="profile-chip" role="button" id="profileMenuTrigger" type="button">
+            <div class="profile-chip__avatar" id="profileAvatar">—</div>
+            <span class="profile-chip__name" id="profileName">Loading…</span>
+          </button>
+          <div class="menu">
+            <button class="menu__item" id="profileAccountLink" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+              Account settings</button>
+            <div class="menu__divider"></div>
+            <button class="menu__item menu__item--danger" id="profileLogoutBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+              Log out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ============ CONTENT ============ -->
+    <main class="content">
+      <div class="page-head">
+        <div class="page-head__eyebrow">AuditPulse Access</div>
+        <h1>Account settings</h1>
+        <p>Your profile, password, and two-factor authentication.</p>
+      </div>
+
+      <div class="card card__pad" style="margin-bottom:var(--sp-6);">
+        <div class="card__head">
+          <h3>Profile</h3>
+        </div>
+        <div class="account-profile-row">
+          <div class="account-profile-row__avatar" id="acctAvatar">—</div>
+          <div>
+            <div class="account-profile-row__name" id="acctName">Loading…</div>
+            <div class="account-profile-row__meta" id="acctEmail"></div>
+            <span class="role-pill" id="acctRolePill"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card__pad" style="margin-bottom:var(--sp-6);">
+        <div class="card__head">
+          <h3>Change password</h3>
+        </div>
+        <div class="auth-alert" id="passwordAlert"></div>
+        <form id="passwordForm" class="account-form">
+          <div class="form-field">
+            <label for="fieldCurrentPassword">Current password</label>
+            <input class="form-control" type="password" id="fieldCurrentPassword" autocomplete="current-password">
+          </div>
+          <div class="form-field">
+            <label for="fieldNewPassword">New password</label>
+            <input class="form-control" type="password" id="fieldNewPassword" placeholder="At least 8 characters" autocomplete="new-password">
+          </div>
+          <div class="form-field">
+            <label for="fieldNewPasswordConfirm">Confirm new password</label>
+            <input class="form-control" type="password" id="fieldNewPasswordConfirm" autocomplete="new-password">
+          </div>
+          <div>
+            <button type="submit" class="btn btn--primary" id="passwordFormSave">Update password</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card card__pad">
+        <div class="card__head">
+          <h3>Two-factor authentication</h3>
+          <span class="badge" id="mfaStatusBadge">Loading…</span>
+        </div>
+        <p class="text-sm text-tertiary" id="mfaIntro">Add a second step at sign-in using any authenticator app (Google Authenticator, Authy, 1Password, etc.).</p>
+
+        <!-- Not enrolled: start button -->
+        <div id="mfaStartPanel">
+          <button class="btn btn--secondary" id="mfaStartBtn">Set up two-factor authentication</button>
+        </div>
+
+        <!-- Enrollment in progress: secret + confirm code -->
+        <div id="mfaEnrollPanel" hidden>
+          <div class="mfa-enroll-box">
+            <p class="text-sm">Add this account to your authenticator app by entering the key below manually (this page doesn't render a QR code):</p>
+            <div class="mfa-secret" id="mfaSecretValue"></div>
+            <p class="text-sm text-tertiary">Account name: <span id="mfaAccountLabel"></span> · Issuer: AuditPulse Access</p>
+          </div>
+          <div class="auth-alert" id="mfaEnrollAlert"></div>
+          <form id="mfaEnrollForm" class="account-form">
+            <div class="form-field">
+              <label for="fieldMfaEnrollCode">Enter the 6-digit code from your app</label>
+              <input class="form-control auth-mfa-input" type="text" id="fieldMfaEnrollCode" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+            </div>
+            <div class="mfa-enroll-actions">
+              <button type="button" class="btn btn--ghost" id="mfaEnrollCancelBtn">Cancel</button>
+              <button type="submit" class="btn btn--primary" id="mfaEnrollSubmitBtn">Enable two-factor authentication</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Enabled: disable button -->
+        <div id="mfaEnabledPanel" hidden>
+          <p class="text-sm">Two-factor authentication is protecting this account.</p>
+          <button class="btn btn--danger btn--sm" id="mfaDisableBtn">Disable two-factor authentication</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============ DISABLE MFA CONFIRM MODAL ============ -->
+<div class="modal-overlay" id="mfaDisableModal">
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="mfaDisableModalTitle">
+    <div class="modal-dialog__title" id="mfaDisableModalTitle">Disable two-factor authentication</div>
+    <div class="modal-dialog__subtitle">Confirm your password to turn off two-factor authentication for your account.</div>
+    <div class="auth-alert" id="mfaDisableAlert"></div>
+    <form id="mfaDisableForm">
+      <div class="modal-dialog__body">
+        <div class="form-field">
+          <label for="fieldMfaDisablePassword">Password</label>
+          <input class="form-control" type="password" id="fieldMfaDisablePassword" autocomplete="current-password">
+        </div>
+      </div>
+      <div class="modal-dialog__actions">
+        <button type="button" class="btn btn--secondary" data-modal-close="mfaDisableModal">Cancel</button>
+        <button type="submit" class="btn btn--danger" id="mfaDisableConfirmBtn">Disable</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/account.js"></script>
+
+<div style="text-align:center; padding: 18px 16px; font-size: 13px; color: var(--text-tertiary, #94A3B8); border-top: 1px solid var(--border, #E2E8F0);"><strong>Designed by Jeevan K S</strong></div>
+</body>
+</html>

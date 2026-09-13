@@ -1,0 +1,48 @@
+/* ==========================================================================
+   roadmap.css — Phase 5 roadmap cards. Deliberately more muted than
+   roles.css's role-card (dashed border, no hover state) — these aren't
+   clickable features, just a labelled list of what's not built yet.
+   ========================================================================== */
+
+.roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
+
+.roadmap-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.roadmap-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.roadmap-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-3); }
+
+.roadmap-card__icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-icon);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-sunken);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+.roadmap-card__icon svg { width: 18px; height: 18px; }
+
+.roadmap-card__name { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-md); }
+.roadmap-card__desc { font-size: var(--fs-sm); color: var(--text-secondary); flex: 1; }
+.roadmap-card__unlocks {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+.roadmap-card__unlocks strong { color: var(--text-secondary); }
+
+@media (max-width: 960px) {
+  .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .roadmap-grid { grid-template-columns: 1fr; }
+}

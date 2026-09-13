@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — AuditPulse Access</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body data-page="login">
+
+<div class="auth-shell">
+  <div class="auth-card" id="loginPanel">
+    <div class="auth-logo">
+      <div class="auth-logo-mark" style="background:#fff;overflow:hidden;"><img src="img/logo.png" alt="AuditPulse logo" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="auth-logo-text">AuditPulse Access<span>Organisation Portal</span></div>
+    </div>
+
+    <h1>Sign in</h1>
+    <p class="auth-card__subtitle">Sign in to manage users, roles, and access for your organisation.</p>
+
+    <div class="auth-alert" id="loginAlert"></div>
+
+    <form class="auth-form" id="loginForm">
+      <div class="form-field">
+        <label for="loginOrgSlug">Organisation URL</label>
+        <input class="form-control" type="text" id="loginOrgSlug" placeholder="acme" autocapitalize="off" autocomplete="organization">
+        <div class="auth-hint">The URL you chose when your organisation was created.</div>
+      </div>
+      <div class="form-field">
+        <label for="loginEmail">Email</label>
+        <input class="form-control" type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label for="loginPassword">Password</label>
+        <input class="form-control" type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn--primary btn--block" id="loginSubmit">Sign in</button>
+    </form>
+
+    <div id="ssoOption" hidden>
+      <div class="auth-divider">or</div>
+      <button type="button" class="auth-sso-btn" id="ssoButton">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span id="ssoButtonLabel">Sign in with SSO</span>
+      </button>
+    </div>
+
+    <p class="auth-footer-line">New organisation? <a href="signup.html">Create one</a></p>
+  </div>
+
+  <div class="auth-card" id="mfaPanel" hidden>
+    <div class="auth-logo">
+      <div class="auth-logo-mark" style="background:#fff;overflow:hidden;"><img src="img/logo.png" alt="AuditPulse logo" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="auth-logo-text">Two-factor check<span>Organisation Portal</span></div>
+    </div>
+
+    <h1>Enter your code</h1>
+    <p class="auth-card__subtitle">Open your authenticator app and enter the current 6-digit code.</p>
+
+    <div class="auth-alert" id="mfaAlert"></div>
+
+    <form class="auth-form" id="mfaForm">
+      <div class="form-field">
+        <label for="mfaCode">Authentication code</label>
+        <input class="form-control auth-mfa-input" type="text" id="mfaCode" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+      </div>
+      <button type="submit" class="btn btn--primary btn--block" id="mfaSubmit">Verify</button>
+      <button type="button" class="btn btn--ghost btn--block" id="mfaBack">Back to sign in</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+
+<div style="text-align:center; padding: 18px 16px; font-size: 13px; color: var(--text-tertiary, #94A3B8); border-top: 1px solid var(--border, #E2E8F0);"><strong>Designed by Jeevan K S</strong></div>
+</body>
+</html>

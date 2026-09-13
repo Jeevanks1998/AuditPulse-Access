@@ -1,0 +1,39 @@
+/* ==========================================================================
+   access-logs.css — filter toolbar + pager for access-logs.html.
+   Table itself reuses .dtable / .card from style.css.
+   ========================================================================== */
+
+.logs-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+
+.logs-action-filter {
+  width: 220px;
+  max-width: 100%;
+}
+
+.log-action-tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 2px 8px;
+  display: inline-block;
+}
+
+.logs-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  margin-top: var(--sp-5);
+}
+
+@media (max-width: 640px) {
+  .logs-action-filter { width: 100%; }
+}
