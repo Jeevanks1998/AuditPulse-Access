@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organisation — AuditPulse Access</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/organisation.css">
+</head>
+<body data-page="organisation">
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-mark" style="background:#fff;overflow:hidden;"><img src="img/logo.png" alt="AuditPulse logo" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="sidebar__logo-text">AuditPulse Access<span>Organisation Portal</span></div>
+    </div>
+
+    <nav>
+      <div class="sidebar__group-label">Access Management</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Dashboard</a></li>
+        <li><a class="sidebar__link" href="users.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Users</a></li>
+        <li><a class="sidebar__link" href="teams.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.8"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M15.5 14.3c2.8.3 4.5 2.3 4.5 5.2"/></svg>
+          Teams</a></li>
+        <li><a class="sidebar__link" href="roles.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"/></svg>
+          Roles</a></li>
+      </ul>
+
+      <div class="sidebar__group-label" style="margin-top:20px;">Organisation</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="organisation.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h.01M9 12h.01M9 16h.01M15 8h.01M15 12h.01M15 16h.01"/></svg>
+          Organisation</a></li>
+        <li><a class="sidebar__link" href="access-logs.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v18M4 3h16v18H4z"/><path d="M13 8h4M13 12h4M13 16h4"/></svg>
+          Access logs</a></li>
+      </ul>
+
+      <div class="sidebar__group-label" style="margin-top:20px;">Coming later</div>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="roadmap.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 4 3 5-7"/></svg>
+          Roadmap</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <a class="sidebar__link sidebar__link--external" href="#" title="Return to the AuditPulse app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 12h6l2-4 2 8 2-4h6"/></svg>
+        Back to AuditPulse</a>
+    </div>
+  </aside>
+
+  <div>
+    <!-- ============ TOPBAR ============ -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+      <div class="topbar__actions">
+        <div class="menu-wrap" id="profileMenuWrap">
+          <button class="profile-chip" role="button" id="profileMenuTrigger" type="button">
+            <div class="profile-chip__avatar" id="profileAvatar">—</div>
+            <span class="profile-chip__name" id="profileName">Loading…</span>
+          </button>
+          <div class="menu">
+            <button class="menu__item" id="profileAccountLink" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+              Account settings</button>
+            <div class="menu__divider"></div>
+            <button class="menu__item menu__item--danger" id="profileLogoutBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+              Log out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ============ CONTENT ============ -->
+    <main class="content">
+      <div class="page-head">
+        <div class="page-head__eyebrow">AuditPulse Access</div>
+        <h1>Organisation</h1>
+        <p>Your organisation's identity and single sign-on configuration.</p>
+      </div>
+
+      <div class="card card__pad" style="margin-bottom:var(--sp-6);">
+        <div class="card__head">
+          <h3>Organisation details</h3>
+        </div>
+        <form id="orgForm" class="org-form">
+          <div class="form-field">
+            <label for="fieldOrgName">Organisation name</label>
+            <input class="form-control" type="text" id="fieldOrgName" placeholder="Acme Corp" disabled>
+          </div>
+          <div class="form-field">
+            <label>Organisation URL</label>
+            <input class="form-control" type="text" id="fieldOrgSlug" disabled>
+            <div class="auth-hint" id="orgSlugHint">Used to sign in — set at signup and can't be changed here.</div>
+          </div>
+          <div class="org-stat-row">
+            <div class="org-stat"><span class="org-stat__value" id="orgStatUsers">—</span><span class="org-stat__label">Users</span></div>
+            <div class="org-stat"><span class="org-stat__value" id="orgStatTeams">—</span><span class="org-stat__label">Teams</span></div>
+            <div class="org-stat"><span class="org-stat__value" id="orgStatRoles">—</span><span class="org-stat__label">Roles</span></div>
+          </div>
+          <div id="orgFormActions" hidden>
+            <button type="submit" class="btn btn--primary" id="orgFormSave">Save changes</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card card__pad" id="ssoCard" hidden>
+        <div class="card__head">
+          <h3>Single sign-on (OIDC)</h3>
+          <span class="badge" id="ssoStatusBadge">Not configured</span>
+        </div>
+        <p class="text-sm text-tertiary" style="margin-bottom:var(--sp-4);">
+          Point this at any OpenID Connect provider — Okta, Google Workspace, Azure AD/Entra, Auth0, Ping — and members of your organisation will see a "Sign in with…" button on the login page.
+        </p>
+        <form id="ssoForm" class="org-form">
+          <div class="form-field">
+            <label for="fieldSsoLabel">Button label</label>
+            <input class="form-control" type="text" id="fieldSsoLabel" placeholder="Okta">
+          </div>
+          <div class="form-field">
+            <label for="fieldSsoIssuer">Issuer URL</label>
+            <input class="form-control" type="text" id="fieldSsoIssuer" placeholder="https://your-org.okta.com">
+          </div>
+          <div class="form-field">
+            <label for="fieldSsoClientId">Client ID</label>
+            <input class="form-control" type="text" id="fieldSsoClientId" placeholder="0oa1b2c3d4e5f6g7h8i9">
+          </div>
+          <div class="form-field">
+            <label for="fieldSsoClientSecret">Client secret</label>
+            <input class="form-control" type="password" id="fieldSsoClientSecret" placeholder="Re-enter the client secret to save changes" autocomplete="new-password">
+            <div class="auth-hint" id="ssoSecretHint"></div>
+          </div>
+          <div class="form-field__row">
+            <label for="fieldSsoEnabled" style="margin:0;">Enabled</label>
+            <label class="toggle">
+              <input type="checkbox" id="fieldSsoEnabled" checked>
+              <span class="toggle__track"></span>
+            </label>
+          </div>
+          <div class="org-form__actions">
+            <button type="button" class="btn btn--danger btn--sm" id="ssoDeleteBtn" hidden>Remove SSO</button>
+            <button type="submit" class="btn btn--primary" id="ssoFormSave">Save SSO configuration</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="empty-state" id="orgAdminOnlyNotice" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"/></svg>
+        <p>Only organisation admins can view or change SSO configuration.</p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/organisation.js"></script>
+
+<div style="text-align:center; padding: 18px 16px; font-size: 13px; color: var(--text-tertiary, #94A3B8); border-top: 1px solid var(--border, #E2E8F0);"><strong>Designed by Jeevan K S</strong></div>
+</body>
+</html>

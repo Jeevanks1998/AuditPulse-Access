@@ -1,0 +1,52 @@
+/* ==========================================================================
+   account.css — account.html: profile row, password form, MFA enrollment.
+   Reuses .card, .form-field, .badge, .auth-alert, .auth-mfa-input from
+   style.css/auth.css.
+   ========================================================================== */
+
+.account-profile-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.account-profile-row__avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--surface-sunken); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg);
+  color: var(--text-secondary); flex-shrink: 0;
+}
+
+.account-profile-row__name { font-weight: 700; font-size: var(--fs-md); color: var(--text-primary); }
+.account-profile-row__meta { font-size: var(--fs-sm); color: var(--text-tertiary); margin: 2px 0 8px; }
+
+.account-form { display: flex; flex-direction: column; gap: var(--sp-4); max-width: 420px; }
+
+.mfa-enroll-box {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-4);
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+
+.mfa-secret {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  letter-spacing: 0.08em;
+  padding: var(--sp-3);
+  margin: var(--sp-2) 0;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xs);
+  word-break: break-all;
+}
+
+.mfa-enroll-actions {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: flex-end;
+}
+
+#mfaStatusBadge.badge--on { background: var(--color-success-soft); color: var(--color-success-text); }

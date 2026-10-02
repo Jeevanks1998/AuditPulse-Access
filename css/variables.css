@@ -1,0 +1,107 @@
+/* ==========================================================================
+   AuditPulse Access Portal — Design Tokens
+   Deliberately reuses AuditPulse's own token set (colors, type, spacing).
+   This portal is a sidecar admin tool for the same product, so it should
+   read as "part of AuditPulse", not a separate brand — same primary blue,
+   same dark sidebar, same Sora/Inter pairing. Portal-only additions are
+   marked below.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand & Semantic Colors ---- */
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-soft: #DBEAFE;
+
+  --color-success: #10B981;
+  --color-success-soft: #D1FAE5;
+  --color-warning: #F59E0B;
+  --color-warning-soft: #FEF3C7;
+  --color-error: #EF4444;
+  --color-error-soft: #FEE2E2;
+
+  --color-success-text: #067A55;
+  --color-warning-text: #92610A;
+  --color-error-text: #B91C1C;
+
+  --color-accent-purple: #8B5CF6;
+  --color-accent-sky: #0EA5E9;
+  --color-accent-orange: #F97316;
+
+  /* ---- Light Mode (default) ---- */
+  --bg: #F8FAFC;
+  --bg-canvas: #F1F5F9;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #F8FAFC;
+  --border: #E2E8F0;
+  --border-strong: #CBD5E1;
+
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --text-tertiary: #94A3B8;
+  --text-on-primary: #FFFFFF;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+  --shadow-primary: 0 8px 20px rgba(37, 99, 235, 0.25);
+
+  --sidebar-bg: #0F172A;
+  --sidebar-text: #94A3B8;
+  --sidebar-text-active: #FFFFFF;
+  --sidebar-hover: rgba(255, 255, 255, 0.06);
+
+  /* ---- Typography ---- */
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --fs-2xs: 0.6875rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+
+  /* ---- Spacing (8pt-ish scale) ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+
+  /* ---- Radius ---- */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-icon: 10px;
+  --radius-md: 12px;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+
+  /* ---- Layout ---- */
+  --sidebar-width: 240px;
+  --header-height: 68px;
+  --content-max: 1180px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+
+  /* ---- Portal-only: role accent colors (Users/Roles pages) ---- */
+  --role-admin: #8B5CF6;
+  --role-admin-soft: #EDE9FE;
+  --role-auditor: #2563EB;
+  --role-auditor-soft: #DBEAFE;
+  --role-reviewer: #0EA5E9;
+  --role-reviewer-soft: #E0F2FE;
+  --role-viewer: #64748B;
+  --role-viewer-soft: #F1F5F9;
+}

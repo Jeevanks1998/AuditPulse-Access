@@ -1,0 +1,90 @@
+/* ==========================================================================
+   teams.css — card grid for teams.html. Reuses .card, .badge, .btn etc.
+   from style.css; this file only adds the team-card layout and the
+   member-chip list inside each card.
+   ========================================================================== */
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-6);
+}
+
+.team-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  box-shadow: var(--shadow-sm);
+}
+
+.team-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.team-card__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  color: var(--text-primary);
+}
+
+.team-card__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.team-card__members {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.team-member__avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--surface-sunken); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: var(--fs-2xs);
+  color: var(--text-secondary); flex-shrink: 0;
+}
+
+.team-member__body { flex: 1; min-width: 0; }
+.team-member__name { font-size: var(--fs-sm); font-weight: 600; color: var(--text-primary); }
+.team-member__email { font-size: var(--fs-2xs); color: var(--text-tertiary); }
+
+.team-member__remove {
+  width: 26px; height: 26px; border: none; background: transparent;
+  border-radius: var(--radius-sm); color: var(--text-tertiary);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.team-member__remove:hover { background: var(--color-error-soft); color: var(--color-error); }
+.team-member__remove svg { width: 14px; height: 14px; }
+
+.team-card__empty-members {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  padding: var(--sp-2) 0;
+}
+
+.team-card__actions {
+  display: flex;
+  gap: var(--sp-2);
+  padding-top: var(--sp-2);
+}
+.team-card__actions .btn { flex: 1; }

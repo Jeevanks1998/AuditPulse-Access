@@ -1,0 +1,63 @@
+/* ==========================================================================
+   sidebar.css — left nav shell, identical structure to AuditPulse's own
+   sidebar so a user moving between the two products feels no seam.
+   ========================================================================== */
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); z-index: 29;
+}
+
+.sidebar {
+  background: var(--sidebar-bg);
+  padding: var(--sp-6) var(--sp-4);
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column; gap: var(--sp-6);
+  overflow-y: auto;
+}
+
+.sidebar__logo { display: flex; align-items: center; gap: var(--sp-3); padding: 0 var(--sp-2); color: var(--sidebar-text-active); }
+.sidebar__logo-mark {
+  width: 34px; height: 34px; border-radius: var(--radius-icon);
+  background: linear-gradient(135deg, var(--color-primary), #60A5FA);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sidebar__logo-text { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-md); line-height: 1.15; }
+.sidebar__logo-text span { display: block; font-family: var(--font-body); font-weight: 500; font-size: var(--fs-2xs); color: var(--sidebar-text); letter-spacing: 0.04em; text-transform: uppercase; }
+
+.sidebar__group-label { font-size: var(--fs-2xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sidebar-text); opacity: 0.55; padding: 0 var(--sp-3); margin-bottom: var(--sp-1); }
+.sidebar__nav + .sidebar__group-label { margin-top: var(--sp-5); }
+.sidebar__nav { display: flex; flex-direction: column; gap: 2px; }
+
+.sidebar__link { display: flex; align-items: center; gap: var(--sp-3); padding: 10px var(--sp-3); border-radius: var(--radius-sm); color: var(--sidebar-text); font-size: var(--fs-sm); font-weight: 500; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+.sidebar__link svg { width: 18px; height: 18px; flex-shrink: 0; }
+.sidebar__link:hover { background: var(--sidebar-hover); color: var(--sidebar-text-active); }
+.sidebar__link.is-active { background: var(--color-primary); color: var(--sidebar-text-active); box-shadow: var(--shadow-primary); }
+
+.sidebar__footer { margin-top: auto; padding-top: var(--sp-4); border-top: 1px solid rgba(255,255,255,0.08); }
+
+/* Back-to-AuditPulse link gets a subtle outline treatment to read as
+   "leaving this app" rather than another portal nav item. */
+.sidebar__link--external { border: 1px solid rgba(255,255,255,0.12); }
+.sidebar__link--external:hover { border-color: rgba(255,255,255,0.22); }
+
+.sidebar-toggle { display: none; }
+
+@media (max-width: 960px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed; left: 0; top: 0; z-index: 30;
+    width: 260px; transform: translateX(-100%);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+  .sidebar.is-open { transform: translateX(0); }
+  .sidebar-backdrop.is-open { display: block; }
+  .sidebar-toggle {
+    display: flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+  }
+  .sidebar-toggle svg { width: 18px; height: 18px; }
+  .topbar__search { width: 200px; }
+  .stat-grid { grid-template-columns: 1fr; }
+}
