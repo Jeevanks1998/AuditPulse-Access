@@ -54,12 +54,36 @@
     return u.name.toLowerCase().indexOf(q) >= 0 || u.email.toLowerCase().indexOf(q) >= 0 || u.role.toLowerCase().indexOf(q) >= 0;
   }
 
+  // The portal and AuditPulse each have their own Google Authenticator
+  // entry, so show both: someone who set it up in AuditPulse but has never
+  // signed in to this portal used to show only "Setup pending" here.
+  function authLine(app, cls, text, title) {
+    return '<span class="auth-state' + (cls ? ' auth-state--' + cls : '') + '" title="' + P.escapeHtml(title) + '">' +
+      '<span class="auth-state__dot"></span><span class="auth-state__app">' + app + '</span> ' + text + '</span>';
+  }
+
   function authenticatorState(u) {
-    if (u.sso) return '<span class="auth-state auth-state--ok"><span class="auth-state__dot"></span>SSO</span>';
-    if (u.mfa_enabled && !u.auth_setup_required) {
-      return '<span class="auth-state auth-state--ok" title="Google Authenticator is set up"><span class="auth-state__dot"></span>Configured</span>';
+    var portal;
+    if (u.sso) {
+      portal = authLine('Portal', 'ok', 'SSO', 'Signs in to this portal with single sign-on');
+    } else if (u.mfa_enabled && !u.auth_setup_required) {
+      portal = authLine('Portal', 'ok', 'Configured', 'Google Authenticator is set up for signing in to this Access portal');
+    } else {
+      portal = authLine('Portal', '', 'Setup pending', 'Has not set up Google Authenticator for this Access portal yet — a QR code is shown at their first portal sign-in');
     }
-    return '<span class="auth-state" title="Will scan a QR code at next login"><span class="auth-state__dot"></span>Setup pending</span>';
+
+    var ap = (u.auditpulse_auth || {}).state;
+    var auditpulse;
+    if (ap === 'configured') {
+      auditpulse = authLine('AuditPulse', 'ok', 'Configured', 'Google Authenticator is set up for signing in to AuditPulse');
+    } else if (ap === 'pending') {
+      auditpulse = authLine('AuditPulse', '', 'Setup pending', 'A QR code is shown at their next AuditPulse sign-in');
+    } else if (ap === 'not_in_auditpulse') {
+      auditpulse = authLine('AuditPulse', 'muted', 'No account yet', 'Not created in AuditPulse yet — it is created when this user is saved with AuditPulse access on');
+    } else {
+      auditpulse = authLine('AuditPulse', 'muted', 'Unknown', 'Could not reach AuditPulse to check');
+    }
+    return '<div class="auth-state-stack">' + portal + auditpulse + '</div>';
   }
 
   function render() {

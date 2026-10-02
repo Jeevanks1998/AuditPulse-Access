@@ -139,6 +139,7 @@ def sync_user(user: dict, reset_authenticator: bool = False) -> dict:
             timeout=AUDITPULSE_TIMEOUT_SECONDS,
         )
         resp.raise_for_status()
+        forget_status_cache()
         return _record(user["email"], ok=True, detail="Synced")
     except httpx.HTTPStatusError as exc:
         detail = f"AuditPulse rejected the sync ({exc.response.status_code})"
@@ -182,6 +183,49 @@ def revoke_user(email: str) -> dict:
 
 def last_sync_for(email: str) -> Optional[dict]:
     return _last_sync.get(email)
+
+
+# --------------------------------------------------------------------------
+# AuditPulse sign-in status (Users page "Authenticator" column)
+#
+# The portal and AuditPulse each have their own Google Authenticator. The
+# portal only knows its own; this asks AuditPulse for the AuditPulse side so
+# the Users page can show both. Cached briefly so loading the page doesn't
+# call AuditPulse on every refresh; never raises.
+# --------------------------------------------------------------------------
+STATUS_CACHE_SECONDS = 30
+_status_cache: dict = {"at": 0.0, "key": None, "data": None}
+
+
+def auditpulse_statuses(emails: list) -> Optional[dict]:
+    """{email_lower: {exists, mfa_enabled, auth_setup_required, ...}} or None
+    when AuditPulse isn't configured / can't be reached right now."""
+    import time
+
+    if not _configured() or not emails:
+        return None
+    key = tuple(sorted({e.lower() for e in emails}))
+    now = time.monotonic()
+    if _status_cache["key"] == key and now - _status_cache["at"] < STATUS_CACHE_SECONDS:
+        return _status_cache["data"]
+    try:
+        resp = httpx.post(
+            f"{AUDITPULSE_BASE_URL}/internal/access/status",
+            json={"emails": list(key)},
+            headers={"Authorization": f"Bearer {AUDITPULSE_API_KEY}"},
+            timeout=AUDITPULSE_TIMEOUT_SECONDS,
+        )
+        resp.raise_for_status()
+        data = (resp.json() or {}).get("users") or {}
+    except Exception:  # noqa: BLE001 — an unreachable AuditPulse never breaks the Users page
+        return None
+    _status_cache.update(at=now, key=key, data=data)
+    return data
+
+
+def forget_status_cache() -> None:
+    """Called after a sync/reset so the next page load shows fresh state."""
+    _status_cache.update(at=0.0, key=None, data=None)
 
 
 # --------------------------------------------------------------------------

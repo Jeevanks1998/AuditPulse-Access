@@ -63,3 +63,7 @@
 }
 .table-wrap:has(.menu.is-open) { padding-bottom: 230px; }
 #usersTbody .menu { min-width: 200px; }
+.auth-state-stack { display: flex; flex-direction: column; gap: 3px; }
+.auth-state__app { font-weight: 600; color: var(--text-primary); min-width: 66px; }
+.auth-state--muted .auth-state__dot { background: var(--border-strong, #CBD5E1); }
+.auth-state--muted { color: var(--text-tertiary, #94A3B8); }

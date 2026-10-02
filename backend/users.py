@@ -83,6 +83,26 @@ def _row_to_user(row: dict) -> dict:
     }
 
 
+def _attach_auditpulse_auth(users: list) -> None:
+    """Adds `auditpulse_auth` to each user: the AuditPulse side of sign-in
+    (configured / pending / not_in_auditpulse / unknown). The portal's own
+    mfa_enabled / auth_setup_required only describe signing in to *this*
+    portal, which is why someone who set up Google Authenticator in
+    AuditPulse still showed "Setup pending" here."""
+    statuses = auditpulse.auditpulse_statuses([u["email"] for u in users])
+    for u in users:
+        if statuses is None:
+            u["auditpulse_auth"] = {"state": "unknown"}
+            continue
+        st = statuses.get(u["email"].lower())
+        if not st or not st.get("exists"):
+            u["auditpulse_auth"] = {"state": "not_in_auditpulse"}
+        elif st.get("mfa_enabled") and not st.get("auth_setup_required"):
+            u["auditpulse_auth"] = {"state": "configured"}
+        else:
+            u["auditpulse_auth"] = {"state": "pending"}
+
+
 USER_SELECT = """
     SELECT users.*, roles.name AS role_name
     FROM users JOIN roles ON roles.id = users.role_id
@@ -105,6 +125,7 @@ def list_users(q: Optional[str] = Query(None, description="Search name/email/rol
             USER_SELECT + " WHERE users.org_id = ? ORDER BY users.created_at DESC", (user["org_id"],)
         ).fetchall()
     users = [_row_to_user(r) for r in rows]
+    _attach_auditpulse_auth(users)
     if q:
         q_lower = q.lower()
         users = [
@@ -153,6 +174,7 @@ def create_user(payload: UserCreate, admin: dict = Depends(require_admin)):
 
     user = _row_to_user(row)
     user["auditpulse_sync"] = auditpulse.sync_user(user)
+    _attach_auditpulse_auth([user])
 
     log_action(admin["org_id"], "user.created", actor=admin, target_type="user", target_id=row["id"], detail=payload.email)
     return user
@@ -196,6 +218,7 @@ def update_user(user_id: int, payload: UserUpdate, admin: dict = Depends(require
 
     user = _row_to_user(row)
     user["auditpulse_sync"] = auditpulse.sync_user(user)
+    _attach_auditpulse_auth([user])
 
     if log_details:
         log_action(admin["org_id"], "user.updated", actor=admin, target_type="user", target_id=user_id, detail="; ".join(log_details))
@@ -217,6 +240,7 @@ def reset_user_authenticator(user_id: int, admin: dict = Depends(require_admin))
 
     user = _row_to_user(row)
     user["auditpulse_sync"] = auditpulse.sync_user(user, reset_authenticator=True)
+    _attach_auditpulse_auth([user])
 
     log_action(admin["org_id"], "user.authenticator_reset", actor=admin, target_type="user", target_id=user_id, detail=row["email"])
     return user
