@@ -1,0 +1,257 @@
+/* ==========================================================================
+   theme.css — AuditPulse Access UI v3 (matches the AuditPulse app redesign)
+   Loaded LAST on every page. Re-skins the existing markup (no IDs/classes
+   renamed, so every page script keeps working):
+     - one type family: Source Sans 3 (the current name of Source Sans Pro)
+     - indigo primary, light sidebar with icon tiles, layered card shadows
+     - sentence-case labels instead of SHOUTY UPPERCASE
+     - coloured icon tiles on section headings (see js/icons.js)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root {
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-primary-soft: #EEF2FF;
+  --color-primary-ring: rgba(79, 70, 229, 0.18);
+
+  --color-success: #12B76A;
+  --color-success-soft: #ECFDF3;
+  --color-success-text: #027A48;
+  --color-warning: #F79009;
+  --color-warning-soft: #FFFAEB;
+  --color-warning-text: #B54708;
+  --color-error: #F04438;
+  --color-error-soft: #FEF3F2;
+  --color-error-text: #B42318;
+
+  --tone-teal: #0D9488;   --tone-teal-soft: #E6F6F4;
+  --tone-violet: #7C3AED; --tone-violet-soft: #F4EBFF;
+  --tone-sky: #0284C7;    --tone-sky-soft: #E0F2FE;
+  --tone-amber: #D97706;  --tone-amber-soft: #FEF6E7;
+
+  --bg: #F6F7FB;
+  --bg-canvas: #F6F7FB;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #F9FAFB;
+  --border: #EAECF0;
+  --border-strong: #D0D5DD;
+
+  --text-primary: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #667085;
+  --text-on-primary: #FFFFFF;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.08), 0 2px 4px -2px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 20px 24px -4px rgba(16, 24, 40, 0.10), 0 8px 8px -4px rgba(16, 24, 40, 0.04);
+  --shadow-primary: 0 6px 16px -4px rgba(79, 70, 229, 0.45);
+
+  --sidebar-bg: #FFFFFF;
+  --sidebar-text: #475467;
+  --sidebar-text-active: #4F46E5;
+  --sidebar-hover: #F2F4F7;
+
+  --font-display: 'Source Sans 3', 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Source Sans 3', 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  /* Source Sans has a smaller x-height than Inter: one step up */
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.3125rem;
+
+  --radius-card: 14px;
+  --radius-md: 10px;
+  --content-max: 1240px;
+
+  --role-auditor: #4F46E5;
+  --role-auditor-soft: #EEF2FF;
+}
+
+/* ---------- base ---------- */
+html { background: var(--bg); }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; color: var(--text-primary); }
+code, pre, kbd, .log-action-tag { font-family: var(--font-code); }
+.mono { font-family: var(--font-body); font-variant-numeric: tabular-nums; }
+:focus-visible { outline-color: var(--color-primary); }
+
+/* ---------- sidebar: light, with icon tiles ---------- */
+.sidebar { background: var(--sidebar-bg); border-right: 1px solid var(--border); }
+.sidebar__logo { padding-bottom: var(--sp-5); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-2); color: var(--text-primary); }
+.sidebar__logo-mark { border-radius: 10px; box-shadow: 0 0 0 1px var(--border); }
+.sidebar__logo-text { color: var(--text-primary); font-weight: 800; letter-spacing: -0.02em; }
+.sidebar__logo-text span { color: var(--text-tertiary); font-weight: 500; text-transform: none; letter-spacing: 0; font-size: var(--fs-xs); }
+.sidebar__group-label {
+  text-transform: none; letter-spacing: 0; font-size: var(--fs-xs); font-weight: 600;
+  color: var(--text-tertiary); opacity: 1; padding-left: 12px;
+}
+.sidebar__link {
+  color: var(--sidebar-text); font-weight: 600; font-size: var(--fs-sm);
+  border-radius: 10px; padding: 8px 10px; gap: 10px;
+}
+.sidebar__link svg {
+  box-sizing: content-box; width: 16px; height: 16px; padding: 6px; border-radius: 8px;
+  background: var(--surface-sunken); color: var(--text-tertiary);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.sidebar__link:hover { background: var(--sidebar-hover); color: var(--text-primary); }
+.sidebar__link.is-active { background: var(--color-primary-soft); color: var(--sidebar-text-active); box-shadow: none; }
+.sidebar__link.is-active svg { background: var(--color-primary); color: #fff; }
+.sidebar__footer { border-top: 1px solid var(--border); }
+.sidebar__link--external { border: 1px solid var(--border); color: var(--text-secondary); }
+.sidebar__link--external:hover { border-color: var(--border-strong); }
+.sidebar-backdrop { background: rgba(16, 24, 40, 0.4); }
+
+/* ---------- topbar ---------- */
+.topbar {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar__search { background: var(--surface-sunken); border-color: var(--border); border-radius: 10px; }
+.topbar__search:focus-within { box-shadow: 0 0 0 4px var(--color-primary-ring); }
+.profile-chip, .sidebar-toggle { border-radius: 10px; }
+.profile-chip__avatar { background: linear-gradient(135deg, #6366F1, #8B5CF6); font-family: var(--font-display); font-weight: 700; }
+
+/* ---------- page heading ---------- */
+.page-head__eyebrow {
+  text-transform: none; letter-spacing: 0; font-size: var(--fs-sm); font-weight: 600;
+  color: var(--color-primary); display: inline-flex; align-items: center; gap: 8px;
+}
+.page-head__eyebrow::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-ring);
+}
+.page-head h1 { font-size: 1.875rem; font-weight: 800; letter-spacing: -0.03em; }
+.page-head p { color: var(--text-secondary); max-width: 70ch; }
+
+/* ---------- cards ---------- */
+.card { border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow-sm); background: var(--surface); }
+.card__head h3 { font-weight: 700; font-size: var(--fs-md); }
+.card__head-sub { color: var(--text-tertiary); }
+
+/* ---------- buttons ---------- */
+.btn { border-radius: 10px; font-weight: 600; letter-spacing: -0.005em; }
+.btn--primary { background: var(--color-primary); box-shadow: var(--shadow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.18); }
+.btn--primary:hover { background: var(--color-primary-hover); }
+.btn--secondary { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+.btn--danger { color: var(--color-error-text); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--color-primary-ring); }
+
+/* ---------- forms ---------- */
+.form-control, input[type="text"], input[type="email"], input[type="password"], input[type="url"],
+input[type="search"], input[type="number"], select, textarea { border-color: var(--border-strong); }
+.form-control { border-radius: 10px; }
+.form-control:focus, #userForm .form-field select:focus { border-color: var(--color-primary); box-shadow: 0 0 0 4px var(--color-primary-ring); }
+.form-field label { font-size: var(--fs-sm); color: var(--text-primary); }
+.toggle input:checked + .toggle__track { background: var(--color-primary); }
+/* field hint — organisation.html uses it without loading auth.css */
+.auth-hint { font-size: var(--fs-xs); color: var(--text-tertiary); line-height: 1.5; }
+
+/* Search box — shared by Users and Access logs. access-logs.html does not
+   load users.css, which left its magnifier icon unstyled (full width). */
+.users-search {
+  display: flex; align-items: center; gap: var(--sp-2);
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: 10px;
+  padding: 9px 14px; width: 340px; max-width: 100%; box-shadow: var(--shadow-sm);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.users-search:focus-within { border-color: var(--color-primary); box-shadow: 0 0 0 4px var(--color-primary-ring); }
+.users-search svg { width: 16px; height: 16px; color: var(--text-tertiary); flex-shrink: 0; }
+.users-search input { border: none; outline: none; background: transparent; font-size: var(--fs-sm); width: 100%; padding: 0; box-shadow: none; }
+@media (max-width: 720px) { .users-search { width: 100%; } }
+
+/* ---------- badges / pills ---------- */
+.badge { text-transform: none; letter-spacing: 0; font-weight: 600; font-size: var(--fs-xs); border-radius: 999px; }
+.role-pill { font-weight: 600; }
+.log-action-tag { font-size: var(--fs-2xs); border-radius: 6px; }
+
+/* ---------- tables ---------- */
+.dtable thead th {
+  text-transform: none; letter-spacing: 0; font-size: var(--fs-xs); font-weight: 600;
+  color: var(--text-tertiary); background: var(--surface-sunken);
+  padding-top: var(--sp-3);
+}
+.dtable thead th:first-child { border-top-left-radius: 8px; }
+.dtable thead th:last-child { border-top-right-radius: 8px; }
+.dtable tbody tr:hover { background: color-mix(in srgb, var(--color-primary) 4%, transparent); }
+.user-cell__avatar, .row-item__avatar {
+  font-family: var(--font-display); background: var(--color-primary-soft); color: var(--color-primary);
+  border-color: transparent;
+}
+
+/* ---------- stat cards (dashboard) ---------- */
+.stat-card { border-radius: var(--radius-card); padding: var(--sp-5); box-shadow: var(--shadow-sm); }
+.stat-card:hover { transform: none; box-shadow: var(--shadow-md); }
+.stat-card__icon { width: 36px; height: 36px; border-radius: 10px; }
+.stat-card__icon svg { width: 18px; height: 18px; }
+.stat-card__label { color: var(--text-secondary); font-weight: 600; }
+.stat-card__value { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+
+/* ---------- menus, modals, toasts ---------- */
+.menu { border-radius: 12px; }
+.menu__item { border-radius: 8px; }
+.modal-overlay { background: rgba(16, 24, 40, 0.45); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.modal-dialog { border-radius: 16px; border: 1px solid var(--border); }
+.modal-dialog__title { font-weight: 800; letter-spacing: -0.02em; }
+.toast { border-radius: 10px; }
+
+/* ---------- auth pages (login / signup / SSO) ---------- */
+.auth-shell {
+  background:
+    radial-gradient(1100px 560px at 12% -10%, rgba(79, 70, 229, 0.12), transparent),
+    radial-gradient(900px 480px at 110% 110%, rgba(139, 92, 246, 0.10), transparent),
+    var(--bg);
+}
+.auth-card { border-radius: 20px; box-shadow: var(--shadow-lg); }
+.auth-card h1 { font-weight: 800; letter-spacing: -0.03em; }
+.auth-logo-text { font-weight: 800; letter-spacing: -0.02em; }
+.auth-logo-text span { text-transform: none; letter-spacing: 0; font-size: var(--fs-xs); }
+.auth-divider { text-transform: none; letter-spacing: 0; }
+.auth-sso-btn { border-radius: 10px; }
+.auth-sso-btn svg { color: var(--color-primary); }
+
+/* ---------- section-heading icons (js/icons.js) ---------- */
+.has-h-icon { display: flex; align-items: center; gap: 10px; }
+.h-icon {
+  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--color-primary-soft); color: var(--color-primary);
+}
+.h-icon svg { width: 17px; height: 17px; }
+.h-icon--success { background: var(--color-success-soft); color: var(--color-success); }
+.h-icon--warning { background: var(--color-warning-soft); color: var(--color-warning); }
+.h-icon--teal    { background: var(--tone-teal-soft);   color: var(--tone-teal); }
+.h-icon--violet  { background: var(--tone-violet-soft); color: var(--tone-violet); }
+.h-icon--sky     { background: var(--tone-sky-soft);    color: var(--tone-sky); }
+.h-icon--amber   { background: var(--tone-amber-soft);  color: var(--tone-amber); }
+.h-icon--neutral { background: var(--surface-sunken); color: var(--text-secondary); border: 1px solid var(--border); }
+
+/* ---------- small screens ---------- */
+@media (max-width: 960px) {
+  .sidebar { box-shadow: var(--shadow-lg); }
+  .app-shell { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .content { padding: var(--sp-5) var(--sp-4); }
+  .topbar { padding: 0 var(--sp-4); }
+  .page-head h1 { font-size: 1.5rem; }
+}
+
+/* roles.html permission matrix header */
+.perm-table th { text-transform: none; letter-spacing: 0; font-size: var(--fs-xs); font-weight: 600; }

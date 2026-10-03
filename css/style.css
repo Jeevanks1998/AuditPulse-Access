@@ -4,7 +4,7 @@
    to. Sidebar-specific rules live in sidebar.css.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+/* Fonts (Source Sans 3 + JetBrains Mono) are imported by theme.css. */
 
 *, *::before, *::after { box-sizing: border-box; }
 

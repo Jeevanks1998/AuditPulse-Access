@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/organisation.css">
+<link rel="stylesheet" href="css/theme.css">
 </head>
 <body data-page="organisation">
 
@@ -99,7 +100,7 @@
 
       <div class="card card__pad" style="margin-bottom:var(--sp-6);">
         <div class="card__head">
-          <h3>Organisation details</h3>
+          <h3 data-icon="building">Organisation details</h3>
         </div>
         <form id="orgForm" class="org-form">
           <div class="form-field">
@@ -124,7 +125,7 @@
 
       <div class="card card__pad" id="ssoCard" hidden>
         <div class="card__head">
-          <h3>Single sign-on (OIDC)</h3>
+          <h3 data-icon="key" data-icon-tone="amber">Single sign-on (OIDC)</h3>
           <span class="badge" id="ssoStatusBadge">Not configured</span>
         </div>
         <p class="text-sm text-tertiary" style="margin-bottom:var(--sp-4);">
@@ -171,6 +172,7 @@
 </div>
 
 <script src="js/config.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/app.js"></script>
 <script src="js/organisation.js"></script>
 

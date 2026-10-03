@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/auth.css">
 <link rel="stylesheet" href="css/account.css">
+<link rel="stylesheet" href="css/theme.css">
 </head>
 <body data-page="account">
 
@@ -100,7 +101,7 @@
 
       <div class="card card__pad" style="margin-bottom:var(--sp-6);">
         <div class="card__head">
-          <h3>Profile</h3>
+          <h3 data-icon="user">Profile</h3>
         </div>
         <div class="account-profile-row">
           <div class="account-profile-row__avatar" id="acctAvatar">—</div>
@@ -114,7 +115,7 @@
 
       <div class="card card__pad">
         <div class="card__head">
-          <h3>Google Authenticator</h3>
+          <h3 data-icon="smartphone" data-icon-tone="teal">Google Authenticator</h3>
           <span class="badge" id="mfaStatusBadge">Loading…</span>
         </div>
         <p class="text-sm text-tertiary">You sign in with your email and the 6-digit code from Google Authenticator (account <strong>AuditPulse Access</strong>). There is no password.</p>
@@ -126,6 +127,7 @@
 </div>
 
 <script src="js/config.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/app.js"></script>
 <script src="js/account.js"></script>
 

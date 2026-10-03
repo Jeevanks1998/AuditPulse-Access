@@ -3,7 +3,7 @@
    Deliberately reuses AuditPulse's own token set (colors, type, spacing).
    This portal is a sidecar admin tool for the same product, so it should
    read as "part of AuditPulse", not a separate brand — same primary blue,
-   same dark sidebar, same Sora/Inter pairing. Portal-only additions are
+   same sidebar, same Source Sans 3 type. Portal-only additions are
    marked below.
    ========================================================================== */
 
@@ -53,8 +53,8 @@
   --sidebar-hover: rgba(255, 255, 255, 0.06);
 
   /* ---- Typography ---- */
-  --font-display: 'Sora', 'Segoe UI', sans-serif;
-  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-display: 'Source Sans 3', 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
 
   --fs-2xs: 0.6875rem;
