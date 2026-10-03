@@ -142,8 +142,7 @@ window.Portal = (function () {
     myOrganisation: function () { return request('/organisations/me'); },
     updateMyOrganisation: function (payload) { return request('/organisations/me', { method: 'PATCH', body: payload }); },
     // ---- misc ----
-    auditpulseStatus: function () { return request('/auditpulse/status'); },
-    listRoadmap: function () { return request('/roadmap'); }
+    auditpulseStatus: function () { return request('/auditpulse/status'); }
   };
 
   /* ------------------------------- toasts ------------------------------- */

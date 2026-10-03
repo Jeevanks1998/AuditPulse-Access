@@ -22,7 +22,6 @@ from database import init_db
 from roles import router as roles_router
 from users import router as users_router
 from auditpulse import router as auditpulse_router
-from roadmap import router as roadmap_router
 from auth import router as auth_router
 from mfa import router as mfa_router
 from sso import router as sso_router
@@ -81,7 +80,6 @@ def health():
 app.include_router(users_router)
 app.include_router(roles_router)
 app.include_router(auditpulse_router)
-app.include_router(roadmap_router)
 app.include_router(auth_router)
 app.include_router(mfa_router)
 app.include_router(sso_router)
