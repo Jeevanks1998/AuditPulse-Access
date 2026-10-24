@@ -3,7 +3,7 @@
 window.PORTAL_CONFIG = {
   // Deployed FastAPI backend for this portal (Railway service
   // "AuditPulse-Access" — see PORTAL_BASE_URL in its Railway variables).
-  API_BASE: 'https://auditpulse-access.onrender.com/api',
+  API_BASE: 'https://auditpulse-access-13-55-234-48.sslip.io/api',
 
   // Where AuditPulse's own frontend is hosted (its dashboard.html etc.),
   // for the sidebar's "Back to AuditPulse" link and each row's "Open in
